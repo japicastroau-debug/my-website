@@ -28,10 +28,7 @@ top:0;
 z-index:1000;
 }
 
-.logo{
-font-weight:700;
-color:#38bdf8;
-}
+.logo{font-weight:700;color:#38bdf8;}
 
 nav a{
 margin-left:15px;
@@ -39,18 +36,10 @@ text-decoration:none;
 color:#e2e8f0;
 transition:0.3s;
 }
-
-nav a:hover{
-color:#38bdf8;
-}
+nav a:hover{color:#38bdf8;}
 
 /* HERO */
-.hero{
-text-align:center;
-padding:100px 20px;
-animation:fadeIn 1s ease-in;
-}
-
+.hero{text-align:center;padding:100px 20px;animation:fadeIn 1s ease-in;}
 .hero h2 span{color:#38bdf8;}
 .hero p{margin-top:10px;color:#94a3b8;}
 
@@ -66,16 +55,8 @@ font-weight:600;
 }
 
 /* SECTIONS */
-section{
-padding:60px 20px;
-max-width:900px;
-margin:auto;
-}
-
-h2{
-color:#38bdf8;
-margin-bottom:15px;
-}
+section{padding:60px 20px;max-width:900px;margin:auto;}
+h2{color:#38bdf8;margin-bottom:15px;}
 
 .card{
 background:#1e293b;
@@ -84,12 +65,9 @@ border-radius:10px;
 margin-bottom:15px;
 transition:0.3s;
 }
+.card:hover{transform:translateY(-5px);}
 
-.card:hover{
-transform:translateY(-5px);
-}
-
-/* SKILLS BUTTON STYLE */
+/* SKILLS */
 .skill-btn{
 display:inline-block;
 background:#38bdf8;
@@ -101,7 +79,6 @@ font-size:12px;
 text-decoration:none;
 transition:0.3s;
 }
-
 .skill-btn:hover{
 background:#0ea5e9;
 transform:scale(1.1);
@@ -182,14 +159,12 @@ to{opacity:1;transform:translateY(0);}
 </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
 <h2>Hello, I'm <span>Jayvee</span></h2>
 <p>Aspiring Web Developer</p>
 <a class="btn" href="#projects">View Projects</a>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 <h2>About Me</h2>
 <div class="card">
@@ -197,27 +172,21 @@ to{opacity:1;transform:translateY(0);}
 </div>
 </section>
 
-<!-- SKILLS (CLICKABLE BUTTONS) -->
 <section id="skills">
 <h2>Skills</h2>
-
 <div class="card">
-
 <a href="#portfolio" class="skill-btn">HTML</a>
 <a href="#portfolio" class="skill-btn">CSS</a>
 <a href="#calculator" class="skill-btn">JavaScript</a>
-
 </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
 <h2>Projects</h2>
 
 <div class="card" id="portfolio">
 <h3>Portfolio Website</h3>
 <p>My personal responsive portfolio site</p>
-
 <a href="https://my-website-production-b1b1.up.railway.app/" target="_blank" style="color:#38bdf8;">
 🔗 View Live
 </a>
@@ -231,32 +200,51 @@ to{opacity:1;transform:translateY(0);}
 
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2>Contact</h2>
-
 <div class="card" style="text-align:center;">
+<p>📧 Email</p>
+<a href="mailto:japi.castro.au@phinmaed.com">japi.castro.au@phinmaed.com</a>
 
-<p style="font-size:18px;">📧 Email</p>
-
-<a href="mailto:japi.castro.au@phinmaed.com?subject=Hiring Inquiry" 
-style="color:#38bdf8; text-decoration:none;">
-japi.castro.au@phinmaed.com
-</a>
-
-<p style="margin-top:20px; font-size:18px;">📘 Facebook</p>
-
-<a href="https://www.facebook.com/share/1CKgzy5vWX/" target="_blank" 
-style="color:#38bdf8; text-decoration:none;">
+<p style="margin-top:20px;">📘 Facebook</p>
+<a href="https://www.facebook.com/share/1CKgzy5vWX/" target="_blank">
 Visit My Facebook
 </a>
-
 </div>
 </section>
 
 <footer>
 <p>© 2026 Jayvee Portfolio</p>
 </footer>
+
+<!-- CALCULATOR -->
+<div class="overlay" onclick="closeCalc()"></div>
+
+<div class="calculator" id="calc">
+<input type="text" id="display" class="display" disabled>
+
+<div class="buttons">
+<button onclick="clearDisplay()" class="clear">C</button>
+<button onclick="append('/')">/</button>
+<button onclick="append('*')">*</button>
+<button onclick="append('-')">-</button>
+
+<button onclick="append('7')">7</button>
+<button onclick="append('8')">8</button>
+<button onclick="append('9')">9</button>
+<button onclick="append('+')">+</button>
+
+<button onclick="append('4')">4</button>
+<button onclick="append('5')">5</button>
+<button onclick="append('6')">6</button>
+<button onclick="calculate()" class="equal">=</button>
+
+<button onclick="append('1')">1</button>
+<button onclick="append('2')">2</button>
+<button onclick="append('3')">3</button>
+<button onclick="append('0')">0</button>
+</div>
+</div>
 
 <script>
 function openCalc(){
@@ -267,6 +255,23 @@ document.querySelector(".overlay").style.display="block";
 function closeCalc(){
 document.getElementById("calc").style.display="none";
 document.querySelector(".overlay").style.display="none";
+}
+
+function append(value){
+document.getElementById("display").value += value;
+}
+
+function clearDisplay(){
+document.getElementById("display").value = "";
+}
+
+function calculate(){
+try{
+document.getElementById("display").value =
+eval(document.getElementById("display").value);
+}catch{
+alert("Invalid Input");
+}
 }
 </script>
 
